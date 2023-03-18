@@ -36,9 +36,6 @@ TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := generic
 TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a53
 
-# APEX
-DEXPREOPT_GENERATE_APEX_IMAGE := true
-
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := tonga
 TARGET_NO_BOOTLOADER := true
@@ -90,7 +87,6 @@ TARGET_BOARD_PLATFORM := mt6765
 # Recovery
 TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
 TARGET_USERIMAGES_USE_EXT4 := true
-TARGET_USERIMAGES_USE_F2FS := true
 
 # Security patch level
 VENDOR_SECURITY_PATCH := 2021-08-01
@@ -106,8 +102,94 @@ PLATFORM_VERSION := 16.1.0
 
 # TWRP Configuration
 TW_THEME := portrait_hdpi
-TW_EXTRA_LANGUAGES := true
 TW_SCREEN_BLANK_ON_BOOT := true
-TW_INPUT_BLACKLIST := "hbtp_vm"
-TW_USE_TOOLBOX := true
-TW_INCLUDE_REPACKTOOLS := true
+
+SHRP_DEVICE_CODE := tonga
+
+SHRP_PATH := device/motorola/$(tonga)
+
+SHRP_MAINTAINER := monterraythehomeless
+
+SHRP_REC_TYPE := SAR
+
+SHRP_DEVICE_TYPE := A/B
+
+SHRP_AB := true
+
+SHRP_NOTCH := true
+
+SHRP_LITE := true
+
+################################## ##############################################
+# SHRP DEFAULT ADDONS - OPTIONAL # Default SHRP addon behavior - fully optional #
+################################## ##############################################
+
+# SHRP comes with a set of default addons.
+# This section allows to disable some or all of them, e.g. to save a little space
+# or when a device does not support / need them.
+
+#####
+# DEFAULT behavior if neither
+# - SHRP_SKIP_DEFAULT_ADDON_X nor
+# - INC_IN_REC_ADDON_X
+# Are set:
+# The addon will be added to the build and saved into the internal storage
+# on flashing (i.e: $(SHRP_INTERNAL)/SHRP/addons)
+#
+# SHRP_SKIP_DEFAULT_ADDON_X := true
+# --> will not add this addon
+#
+# INC_IN_REC_ADDON_X := true
+# --> will add this addon & store it within the recovery ramdisk (i.e. NOT in the internal storage!)
+#
+# If SHRP_SKIP_DEFAULT_ADDON_X is set INC_IN_REC_ADDON_X will be ignored!
+#
+######
+
+# Addon - Substratum Overlay (OMS -Normal- disabler)
+# Default (if not set) is not skipping this addon (i.e. add it)
+# Ensure you understood the above note on the default behavior!
+SHRP_SKIP_DEFAULT_ADDON_1 := true
+# Default (if not set) is NOT adding it to the ramdisk but internal storage.
+# To store this addon into the recovery ramdisk instead set to "true" here.
+# Ensure you understood the above note on the default behavior!
+# INC_IN_REC_ADDON_1 := true
+
+# Addon - Substratum Overlay (OMS -legacy- disabler)
+# Default (if not set) is not skipping this addon (i.e. add it)
+# Ensure you understood the above note on the default behavior!
+SHRP_SKIP_DEFAULT_ADDON_2 := true
+# Default (if not set) is NOT adding it to the ramdisk but internal storage.
+# To store this addon into the recovery ramdisk instead set to "true" here.
+# Ensure you understood the above note on the default behavior!
+# INC_IN_REC_ADDON_2 := true
+
+# Addon - Clear Fingerprint (remove fingerprint lock from system)
+# Default (if not set) is not skipping this addon (i.e. add it)
+# Ensure you understood the above note on the default behavior!
+SHRP_SKIP_DEFAULT_ADDON_3 := true
+# Default (if not set) is NOT adding it to the ramdisk but internal storage.
+# To store this addon into the recovery ramdisk instead set to "true" here.
+# Ensure you understood the above note on the default behavior!
+# INC_IN_REC_ADDON_3 := true
+
+# Addon - Force Encryption (remove force encryption from your device)
+# Default (if not set) is not skipping this addon (i.e. add it)
+# Ensure you understood the above note on the default behavior!
+SHRP_SKIP_DEFAULT_ADDON_4 := true
+# Default (if not set) is NOT adding it to the ramdisk but internal storage.
+# To store this addon into the recovery ramdisk instead set to "true" here.
+# Ensure you understood the above note on the default behavior!
+# INC_IN_REC_ADDON_4 := true
+
+# Default (if not set) is NOT adding it to the ramdisk but internal storage.
+# To store magisk zip into the recovery ramdisk instead set to "true" here.
+# Ensure you understood the above note on the default behavior!
+# INC_IN_REC_MAGISK := true
+
+# Default (if not set) will show magisk root and unroot option inside the recovery.
+# To hide the prebuilt magisk flash option from recovery, set value to "true".
+# Ensure you understood the above note on the default behavior!
+SHRP_EXCLUDE_MAGISK_FLASH := true
+
+SHRP_EXTERNAL_ADDON_PATH := "device/motorola/$(tonga)/Addon/"

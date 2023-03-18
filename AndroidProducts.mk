@@ -6,9 +6,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/omni_tonga.mk
+    $(LOCAL_DIR)/twrp_tonga.mk
 
 COMMON_LUNCH_CHOICES := \
-    omni_tonga-user \
-    omni_tonga-userdebug \
-    omni_tonga-eng
+    twrp_tonga-user \
+    twrp_tonga-userdebug \
+    twrp_tonga-eng

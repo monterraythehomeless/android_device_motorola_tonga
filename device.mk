@@ -32,3 +32,11 @@ PRODUCT_PACKAGES += \
     update_engine \
     update_verifier \
     update_engine_sideload
+
+
+PRODUCT_SHIPPING_API_LEVEL := 30
+
+TARGET_OTA_ASSERT_DEVICE := tonga
+
+TARGET_COPY_OUT_VENDOR := motorola
+
